@@ -319,7 +319,7 @@ Rigidbody:
   m_GameObject: {fileID: 8578324730182786234}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0.2
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -434,7 +434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34cea2e122260473ea121c134e9aae27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rcsThrust: 150
+  rcsThrust: 130
   mainThrust: 30
 --- !u!1 &8616704794114631327
 GameObject:
