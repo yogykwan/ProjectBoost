@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
 {
@@ -10,6 +8,9 @@ public class Rocket : MonoBehaviour
 
     Rigidbody rigidBody;
     AudioSource audioSource;
+
+    enum State { Alive, Dying, Transcending }
+    State state = State.Alive;
 
     // Start is called before the first frame update
     void Start()
@@ -21,24 +22,43 @@ public class Rocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Thrust();
-        Rotate();
+        if (state == State.Alive)
+        {
+            Thrust();
+            Rotate();
+        }
     }
 
 
     void OnCollisionEnter(Collision collision)
     {
-        switch (collision.gameObject.tag) {
+        if (state == State.Dying) return;
+
+        switch (collision.gameObject.tag)
+        {
             case "Friendly":
-                print("Ok");
                 break;
-            case "Fuel":
-                print("Fuel");
+            case "Finish":
+                state = State.Transcending;
+                Invoke("LoadNextLevel", 1f);
                 break;
             default:
-                print("Die");
+                state = State.Dying;
+                Invoke("LoadFirstLevel", 1f);
                 break;
         }
+    }
+
+    private void LoadNextLevel()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = (currentSceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
+        SceneManager.LoadScene(nextSceneIndex);
+    }
+
+    private void LoadFirstLevel()
+    {
+        SceneManager.LoadScene(0);
     }
 
     private void Thrust()
@@ -65,7 +85,7 @@ public class Rocket : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-            
+
             transform.Rotate(Vector3.forward * rotationThisFrame);
         }
         else if (Input.GetKey(KeyCode.D))
