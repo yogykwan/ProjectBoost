@@ -353,7 +353,7 @@ AudioSource:
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
-  BypassEffects: 0
+  BypassEffects: 1
   BypassListenerEffects: 0
   BypassReverbZones: 0
   rolloffCustomCurve:
@@ -438,7 +438,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rcsThrust: 130
-  mainThrust: 30
+  mainThrust: 1500
+  levelLoadDelay: 2
   mainEngine: {fileID: 8300000, guid: 78500c5c2b9c341bcba43715136efe85, type: 3}
   success: {fileID: 8300000, guid: a9f6e5a97fff64c7e8a156bfc665ce96, type: 3}
   death: {fileID: 8300000, guid: a94831133a6c04629a9ac9d676af794a, type: 3}
