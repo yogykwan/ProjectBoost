@@ -336,7 +336,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a9b3d32427b194551a3626b3cbf44fd3, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 0.8
@@ -436,6 +436,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rcsThrust: 130
   mainThrust: 30
+  mainEngine: {fileID: 8300000, guid: 78500c5c2b9c341bcba43715136efe85, type: 3}
+  success: {fileID: 8300000, guid: a9f6e5a97fff64c7e8a156bfc665ce96, type: 3}
+  death: {fileID: 8300000, guid: a94831133a6c04629a9ac9d676af794a, type: 3}
 --- !u!1 &8616704794114631327
 GameObject:
   m_ObjectHideFlags: 0
